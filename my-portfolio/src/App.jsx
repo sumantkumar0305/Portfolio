@@ -4,7 +4,7 @@ import About from "./Pages/About";
 import Skills from "./Pages/Skills";
 import Projects from "./Pages/Projects";
 import Contact from "./Pages/Contact";
-import Navbar from "./components/navbar";
+import Navbar from "./components/Navbar";
 
 export default function App() {
   return (
