@@ -8,17 +8,6 @@ import Navbar from "./components/Navbar";
 
 export default function App() {
   return (
-    // <BrowserRouter>
-      {/* <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/skills" element={<Skills />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes> */}
-    // </BrowserRouter>
-
     <h1>Hello i am hearing</h1>
   );
 }
