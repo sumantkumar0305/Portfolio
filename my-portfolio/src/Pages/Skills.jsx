@@ -15,57 +15,70 @@ import LanguageIcon from '@mui/icons-material/Language';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import MemoryIcon from '@mui/icons-material/Memory';
 import PsychologyIcon from '@mui/icons-material/Psychology';
+import CodeIcon from "@mui/icons-material/Code";
 
 // Data Structure with Icons
 const skillCategories = [
   {
     title: "Programming Languages",
-    icon: <TerminalIcon />,
+    icon: <CodeIcon />,
     skills: ["C++", "JavaScript", "Python"],
   },
   {
-    title: "Web Technologies",
+    title: "Frontend Development",
     icon: <LanguageIcon />,
     skills: [
       "HTML5",
       "CSS3",
       "React.js",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "REST APIs",
-      "MySql"
+      "Material UI",
+      "Responsive Design",
     ],
   },
   {
-    title: "Data Science",
+    title: "Backend & Databases",
+    icon: <MemoryIcon />,
+    skills: [
+      "Node.js",
+      "Express.js",
+      "REST APIs",
+      "MongoDB",
+      "MySQL",
+      "Flask",
+    ],
+  },
+  {
+    title: "Data Science & Analysis",
     icon: <AssessmentIcon />,
     skills: [
-      "Python",
       "NumPy",
       "Pandas",
+      "Matplotlib",
+      "Seaborn",
       "Data Cleaning",
       "EDA",
     ],
   },
   {
-    title: "CS Fundamentals",
+    title: "Computer Science Fundamentals",
     icon: <MemoryIcon />,
     skills: [
       "Data Structures & Algorithms",
       "OOP",
       "DBMS",
       "Operating Systems",
+      "Problem Solving",
     ],
   },
   {
-    title: "Soft Skills",
+    title: "Tools & Technologies",
     icon: <PsychologyIcon />,
     skills: [
-      "English Communication",
-      "Problem Solving",
-      "Logical Thinking",
-      "Team Collaboration",
+      "Git & GitHub",
+      "VS Code",
+      "Postman",
+      "Render Deployment",
+      "NPM",
     ],
   },
 ];
