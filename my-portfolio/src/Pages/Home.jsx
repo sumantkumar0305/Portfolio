@@ -207,7 +207,7 @@ export default function Home() {
               useFlexGap
             >
               {[
-                { name: "LeetCode", url: "https://leetcode.com/u/Sumant857800/", color: "#ffa116" },
+                { name: "LeetCode", url: "https://leetcode.com/u/sumantkumar0305/", color: "#ffa116" },
                 { name: "CodeChef", url: "https://www.codechef.com/users/colony_colt_36", color: "#5b4638" },
               ].map((platform) => (
                 <Button
