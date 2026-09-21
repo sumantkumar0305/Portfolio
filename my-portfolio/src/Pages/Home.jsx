@@ -170,7 +170,7 @@ export default function Home() {
               fullWidth={isMobile}
               startIcon={<DescriptionIcon />}
               component="a"
-              href="/Resume.pdf"
+              href="/WebDevResume.pdf"
               target="_blank"
               sx={{
                 px: 4,
