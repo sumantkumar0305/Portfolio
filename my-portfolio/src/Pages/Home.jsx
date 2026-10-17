@@ -1,28 +1,60 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { 
-  Box, 
-  Typography, 
-  Button, 
-  Stack, 
-  Container, 
-  useTheme, 
-  useMediaQuery 
+import {
+  Box,
+  Typography,
+  Button,
+  Stack,
+  Container,
+  useTheme,
+  useMediaQuery,
+  Chip,
+  GlobalStyles,
 } from "@mui/material";
+
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import DescriptionIcon from "@mui/icons-material/Description";
 import CodeIcon from "@mui/icons-material/Code";
+import { FaLinkedin } from "react-icons/fa";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import PsychologyIcon from "@mui/icons-material/Psychology";
+import TerminalIcon from "@mui/icons-material/Terminal";
 
 export default function Home() {
   const navigate = useNavigate();
   const theme = useTheme();
-  
-  // Checks if the screen is smaller than "sm" (600px)
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleShowProject = () => {
     navigate("/projects");
   };
+
+  const codingProfiles = [
+    {
+      name: "LeetCode",
+      url: "https://leetcode.com/u/sumantkumar0305/",
+      color: "#FFA116",
+    },
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/sumant-kumar-dev/",
+      color: "#0A66C2",
+      icon: <FaLinkedin />,
+    },
+    {
+      name: "GitHub",
+      url: "https://github.com/sumantkumar0305",
+      color: "#0F172A",
+      icon: <GitHubIcon />,
+    },
+  ];
+
+  const focusAreas = [
+    { label: "Full-Stack Development", icon: <CodeIcon fontSize="small" /> },
+    { label: "Machine Learning", icon: <PsychologyIcon fontSize="small" /> },
+    { label: "Data Science", icon: <TerminalIcon fontSize="small" /> },
+    { label: "DSA with C++", icon: undefined },
+  ];
 
   return (
     <Box
@@ -32,119 +64,188 @@ export default function Home() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#f8fafc",
+        backgroundColor: "#F8FAFC",
         position: "relative",
         overflow: "hidden",
-        // Adds breathing room at the top/bottom on mobile
-        py: { xs: 4, md: 0 }, 
+        py: { xs: 8, md: 12 },
+        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
       }}
     >
-      {/* Background Glow Effect - Scaled for mobile */}
+      <GlobalStyles
+        styles={`
+          @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        `}
+      />
+
+      {/* Background Radial Glow */}
       <Box
         sx={{
           position: "absolute",
-          width: { xs: "280px", sm: "450px", md: "600px" },
-          height: { xs: "280px", sm: "450px", md: "600px" },
+          width: { xs: "320px", sm: "500px", md: "700px" },
+          height: { xs: "320px", sm: "500px", md: "700px" },
           background:
-            "radial-gradient(circle, rgba(33,150,243,0.12) 0%, rgba(255,255,255,0) 70%)",
+            "radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(248, 250, 252, 0) 70%)",
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
           zIndex: 0,
+          pointerEvents: "none",
         }}
       />
 
       <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
-        <Stack 
-          spacing={{ xs: 3, md: 5 }} 
-          alignItems="center" 
+        <Stack
+          spacing={{ xs: 3.5, md: 4.5 }}
+          alignItems="center"
           textAlign="center"
         >
-          {/* Profile Image - Significantly larger on mobile for visibility */}
+          {/* Profile Image Wrapper */}
           <Box
-            component="img"
-            src="/Image.png"
-            alt="Sumant Kumar"
             sx={{
-              width: { xs: "150px", sm: "170px", md: "190px" },
-              height: { xs: "150px", sm: "170px", md: "190px" },
+              position: "relative",
+              p: "6px",
               borderRadius: "50%",
-              objectFit: "cover",
-              border: "4px solid #ffffff",
-              boxShadow: "0 10px 25px rgba(33, 150, 243, 0.2)",
+              backgroundColor: "#FFFFFF",
+              border: "1px solid #E2E8F0",
+              boxShadow: "0 12px 35px rgba(37, 99, 235, 0.12)",
             }}
-          />
-
-          <Box>
-            {/* Greeting */}
-            <Typography
-              variant="overline"
+          >
+            <Box
+              component="img"
+              src="/Image.png"
+              alt="Sumant Kumar"
               sx={{
-                color: "primary.main",
-                fontWeight: 700,
-                letterSpacing: 1.5,
-                fontSize: { xs: "0.8rem", md: "1rem" },
+                width: { xs: 135, sm: 160, md: 180 },
+                height: { xs: 135, sm: 160, md: 180 },
+                borderRadius: "50%",
+                objectFit: "cover",
                 display: "block",
-                mb: 1
+              }}
+            />
+          </Box>
+
+          {/* Intro Headers */}
+          <Box>
+            <Box
+              sx={{
+                display: "inline-block",
+                px: 2,
+                py: 0.6,
+                mb: 2,
+                borderRadius: "20px",
+                backgroundColor: "#EFF6FF",
+                border: "1px solid #DBEAFE",
+                color: "#2563EB",
+                fontWeight: 700,
+                fontSize: { xs: "0.8rem", md: "0.85rem" },
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
               }}
             >
-              Hi, I’m Sumant Kumar 👋
-            </Typography>
+              Hi, I'm Sumant Kumar 👋
+            </Box>
 
-            {/* Main Title - Responsive sizing to prevent "tiny" text */}
             <Typography
-              variant="h1"
+              component="h1"
               sx={{
+                fontFamily: "'Bricolage Grotesque', sans-serif",
                 fontWeight: 800,
-                fontSize: { xs: "2.4rem", sm: "3.5rem", md: "4.2rem" },
+                fontSize: {
+                  xs: "2.4rem",
+                  sm: "3.5rem",
+                  md: "4.2rem",
+                },
                 lineHeight: 1.1,
+                letterSpacing: "-0.02em",
                 mb: 2,
-                background: "linear-gradient(45deg, #0f172a 30%, #2563eb 90%)",
+                background: "linear-gradient(135deg, #0F172A 30%, #2563EB 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
             >
-              MERN Stack Developer
+              Full-Stack Developer
             </Typography>
 
-            {/* Subtitle */}
             <Typography
-              variant="h5"
-              sx={{ 
-                fontSize: { xs: "1.15rem", md: "1.5rem" },
-                color: "text.secondary",
-                mb: 2,
-                px: { xs: 1, md: 0 }
+              sx={{
+                fontSize: { xs: "1.1rem", md: "1.4rem" },
+                color: "#475569",
+                fontWeight: 500,
+                mb: 2.5,
               }}
             >
-              Specializing in{" "}
-              <Box component="span" sx={{ color: "primary.main", fontWeight: 600 }}>DSA (C++)</Box>
-              {" "} & {" "}
-              <Box component="span" sx={{ color: "success.main", fontWeight: 600 }}>Data Science (Python)</Box>
+              Interested in{" "}
+              <Box
+                component="span"
+                sx={{ color: "#2563EB", fontWeight: 700 }}
+              >
+                Data Science
+              </Box>
+              {" & "}
+              <Box
+                component="span"
+                sx={{ color: "#059669", fontWeight: 700 }}
+              >
+                Machine Learning
+              </Box>
             </Typography>
 
-            {/* Bio Description */}
             <Typography
-              variant="body1"
-              sx={{ 
-                fontSize: { xs: "1rem", md: "1.1rem" },
-                color: "text.secondary",
-                maxWidth: "580px",
+              sx={{
+                fontSize: { xs: "0.98rem", md: "1.08rem" },
+                color: "#64748B",
+                maxWidth: 620,
                 mx: "auto",
-                lineHeight: 1.6,
-                px: { xs: 2, md: 0 }
+                lineHeight: 1.8,
+                px: { xs: 1, md: 0 },
               }}
             >
-              I build scalable full-stack applications and analyze data to extract
-              meaningful insights. Passionate about clean code and performance.
+              I build full-stack web applications, develop machine learning
+              solutions, and use data analysis to solve real-world problems.
+              I also enjoy strengthening my problem-solving skills through
+              Data Structures and Algorithms using C++.
             </Typography>
           </Box>
 
-          {/* Action Buttons - Stacked on mobile, side-by-side on desktop */}
-          <Stack 
-            direction={{ xs: "column", sm: "row" }} 
-            spacing={2} 
-            sx={{ width: { xs: "100%", sm: "auto" }, px: { xs: 4, sm: 0 } }}
+          {/* Focus Areas Chips */}
+          <Stack
+            direction="row"
+            spacing={1}
+            useFlexGap
+            flexWrap="wrap"
+            justifyContent="center"
+          >
+            {focusAreas.map((item) => (
+              <Chip
+                key={item.label}
+                label={item.label}
+                icon={item.icon}
+                sx={{
+                  fontWeight: 600,
+                  fontSize: "0.85rem",
+                  backgroundColor: "#FFFFFF",
+                  border: "1px solid #E2E8F0",
+                  borderRadius: "8px",
+                  px: 0.5,
+                  py: 2,
+                  color: "#334155",
+                  boxShadow: "0 1px 2px rgba(0,0,0,0.02)",
+                  "& .MuiChip-icon": {
+                    color: "#2563EB",
+                  },
+                }}
+              />
+            ))}
+          </Stack>
+
+          {/* Main Action Buttons */}
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={2}
+            sx={{
+              width: { xs: "100%", sm: "auto" },
+              pt: 1,
+            }}
           >
             <Button
               variant="contained"
@@ -154,11 +255,19 @@ export default function Home() {
               onClick={handleShowProject}
               sx={{
                 px: 4,
-                py: 1.8,
-                borderRadius: "12px",
+                py: 1.6,
+                borderRadius: "10px",
                 textTransform: "none",
                 fontWeight: 700,
-                fontSize: "1rem"
+                fontSize: "1rem",
+                backgroundColor: "#2563EB",
+                boxShadow: "0 4px 14px rgba(37, 99, 235, 0.25)",
+                transition: "all 0.2s ease-in-out",
+                "&:hover": {
+                  backgroundColor: "#1D4ED8",
+                  transform: "translateY(-2px)",
+                  boxShadow: "0 6px 20px rgba(37, 99, 235, 0.35)",
+                },
               }}
             >
               View Projects
@@ -170,64 +279,81 @@ export default function Home() {
               fullWidth={isMobile}
               startIcon={<DescriptionIcon />}
               component="a"
-              href="/WebDevResume.pdf"
+              href="/WebDev_Resume.pdf"
               target="_blank"
+              rel="noopener noreferrer"
               sx={{
                 px: 4,
-                py: 1.8,
-                borderRadius: "12px",
+                py: 1.6,
+                borderRadius: "10px",
                 textTransform: "none",
                 fontWeight: 700,
-                fontSize: "1rem"
+                fontSize: "1rem",
+                color: "#0F172A",
+                borderColor: "#CBD5E1",
+                backgroundColor: "#FFFFFF",
+                transition: "all 0.2s ease-in-out",
+                "&:hover": {
+                  borderColor: "#0F172A",
+                  backgroundColor: "#F8FAFC",
+                  transform: "translateY(-2px)",
+                },
               }}
             >
-              See Resume
+              View Resume
             </Button>
           </Stack>
 
-          {/* Coding Profiles Section */}
+          {/* Social Profiles */}
           <Box sx={{ width: "100%", pt: 2 }}>
             <Typography
               variant="caption"
-              sx={{ 
-                letterSpacing: 2, 
-                fontWeight: 700, 
-                color: "text.disabled",
+              sx={{
+                letterSpacing: 1.5,
+                fontWeight: 700,
+                color: "#94A3B8",
                 display: "block",
-                mb: 2 
+                mb: 2,
+                textTransform: "uppercase",
               }}
             >
-              CODING PROFILES
+              Coding & Social Profiles
             </Typography>
-            <Stack 
-              direction="row" 
-              spacing={2} 
+
+            <Stack
+              direction="row"
+              spacing={1.5}
               justifyContent="center"
               flexWrap="wrap"
               useFlexGap
             >
-              {[
-                { name: "LeetCode", url: "https://leetcode.com/u/sumantkumar0305/", color: "#ffa116" },
-                { name: "CodeChef", url: "https://www.codechef.com/users/colony_colt_36", color: "#5b4638" },
-              ].map((platform) => (
+              {codingProfiles.map((platform) => (
                 <Button
                   key={platform.name}
                   component="a"
                   href={platform.url}
                   target="_blank"
+                  rel="noopener noreferrer"
                   variant="outlined"
-                  startIcon={<CodeIcon />}
+                  startIcon={platform.icon || <CodeIcon />}
                   sx={{
                     textTransform: "none",
                     fontWeight: 600,
+                    fontSize: "0.9rem",
                     borderRadius: "8px",
-                    color: "text.primary",
-                    borderColor: "divider",
-                    '&:hover': {
+                    color: "#334155",
+                    backgroundColor: "#FFFFFF",
+                    borderColor: "#E2E8F0",
+                    px: 2.2,
+                    py: 1,
+                    transition: "all 0.2s ease-in-out",
+                    "&:hover": {
                       borderColor: platform.color,
                       color: platform.color,
-                      backgroundColor: "transparent"
-                    }
+                      backgroundColor: "#FFFFFF",
+                      transform: "translateY(-2px)",
+                      boxShadow: `0 4px 12px ${platform.color}15`,
+                    },
                   }}
                 >
                   {platform.name}
