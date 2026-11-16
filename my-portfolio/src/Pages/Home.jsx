@@ -10,7 +10,11 @@ import {
   useMediaQuery,
   Chip,
   GlobalStyles,
+  Dialog,
+  IconButton,
 } from "@mui/material";
+
+import CloseIcon from "@mui/icons-material/Close";
 
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import DescriptionIcon from "@mui/icons-material/Description";
@@ -21,6 +25,7 @@ import PsychologyIcon from "@mui/icons-material/Psychology";
 import TerminalIcon from "@mui/icons-material/Terminal";
 
 export default function Home() {
+  const [openImage, setOpenImage] = React.useState(false);
   const navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -114,12 +119,18 @@ export default function Home() {
               component="img"
               src="/Image.png"
               alt="Sumant Kumar"
+              onClick={() => setOpenImage(true)}
               sx={{
                 width: { xs: 135, sm: 160, md: 180 },
                 height: { xs: 135, sm: 160, md: 180 },
                 borderRadius: "50%",
                 objectFit: "cover",
                 display: "block",
+                cursor: "pointer",
+                transition: "transform 0.25s ease",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                },
               }}
             />
           </Box>
@@ -363,6 +374,54 @@ export default function Home() {
           </Box>
         </Stack>
       </Container>
+
+      {/* Full Image Preview */}
+      <Dialog
+        open={openImage}
+        onClose={() => setOpenImage(false)}
+        maxWidth={false}
+        PaperProps={{
+          sx: {
+            backgroundColor: "transparent",
+            boxShadow: "none",
+            overflow: "visible",
+            m: 2,
+          },
+        }}
+      >
+        <IconButton
+          onClick={() => setOpenImage(false)}
+          sx={{
+            position: "absolute",
+            top: -15,
+            right: -15,
+            zIndex: 2,
+            color: "#FFFFFF",
+            backgroundColor: "#0F172A",
+            "&:hover": {
+              backgroundColor: "#334155",
+            },
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+
+        <Box
+          component="img"
+          src="/Image.png"
+          alt="Sumant Kumar - Full Image"
+          sx={{
+            display: "block",
+            maxWidth: "90vw",
+            maxHeight: "90vh",
+            width: "auto",
+            height: "auto",
+            objectFit: "contain",
+            borderRadius: "12px",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
+          }}
+        />
+      </Dialog>
     </Box>
   );
 }

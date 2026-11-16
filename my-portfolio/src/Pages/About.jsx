@@ -12,7 +12,11 @@ import {
   Stack,
   Divider,
   GlobalStyles,
+  Dialog,
+  IconButton,
 } from "@mui/material";
+
+import CloseIcon from "@mui/icons-material/Close";
 
 import {
   SiReact,
@@ -42,6 +46,7 @@ import ModelTrainingIcon from "@mui/icons-material/ModelTraining";
 import CloudIcon from "@mui/icons-material/Cloud";
 
 export default function About() {
+  const [openImage, setOpenImage] = React.useState(false);
   const cardStyle = {
     p: { xs: 3, sm: 4 },
     height: "100%",
@@ -218,7 +223,15 @@ export default function About() {
                     component="img"
                     src={profileImageSrc}
                     alt="Sumant Kumar"
-                    sx={imageStyle}
+                    onClick={() => setOpenImage(true)}
+                    sx={{
+                      ...imageStyle,
+                      cursor: "pointer",
+                      transition: "transform 0.25s ease",
+                      "&:hover": {
+                        transform: "scale(1.05)",
+                      },
+                    }}
                   />
                   <Typography
                     sx={{
@@ -444,6 +457,52 @@ export default function About() {
           </Grid>
         </Grid>
       </Box>
+      <Dialog
+        open={openImage}
+        onClose={() => setOpenImage(false)}
+        maxWidth={false}
+        PaperProps={{
+          sx: {
+            backgroundColor: "transparent",
+            boxShadow: "none",
+            overflow: "visible",
+            m: 2,
+          },
+        }}
+      >
+        <IconButton
+          onClick={() => setOpenImage(false)}
+          sx={{
+            position: "absolute",
+            top: -15,
+            right: -15,
+            zIndex: 2,
+            color: "#ffffff",
+            backgroundColor: "#0F172A",
+            "&:hover": {
+              backgroundColor: "#334155",
+            },
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+
+        <Box
+          component="img"
+          src={profileImageSrc}
+          alt="Sumant Kumar - Full Image"
+          sx={{
+            display: "block",
+            maxWidth: "90vw",
+            maxHeight: "90vh",
+            width: "auto",
+            height: "auto",
+            objectFit: "contain",
+            borderRadius: "12px",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
+          }}
+        />
+      </Dialog>
     </Box>
   );
 }
