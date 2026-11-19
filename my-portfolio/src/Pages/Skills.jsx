@@ -11,6 +11,7 @@ import ModelTrainingIcon from "@mui/icons-material/ModelTraining";
 import CloudIcon from "@mui/icons-material/Cloud";
 import BuildIcon from "@mui/icons-material/Build";
 
+
 const groups = [
   {
     name: "Build",
@@ -21,7 +22,7 @@ const groups = [
       {
         title: "Programming Languages",
         icon: <CodeIcon />,
-        skills: ["C++", "Python", "JavaScript", "SQL"],
+        skills: ["C++", "Python", "JavaScript", "Java", "SQL"],
       },
       {
         title: "Frontend",
@@ -30,6 +31,7 @@ const groups = [
           "HTML5",
           "CSS3",
           "React.js",
+          "Angular",
           "React Router",
           "Material UI",
           "Tailwind CSS",
@@ -43,6 +45,8 @@ const groups = [
         skills: [
           "Node.js",
           "Express.js",
+          "Spring Boot",
+          "FastAPI",
           "Flask",
           "REST APIs",
           "JWT Authentication",
@@ -116,8 +120,8 @@ const groups = [
           "Object-Oriented Programming",
           "STL",
           "DBMS",
-          "Operating Systems",
-          "Computer Networks",
+          "Operating Systems (Basic)",
+          "Computer Networks (Basic)",
           "Problem Solving",
         ],
       },
@@ -149,6 +153,7 @@ const groups = [
     ],
   },
 ];
+
 
 const ink = "#10201B";
 const muted = "#5B6B65";

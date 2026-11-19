@@ -20,6 +20,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import {
   SiReact,
+  SiFastapi,
   SiNodedotjs,
   SiExpress,
   SiMongodb,
@@ -142,6 +143,7 @@ export default function About() {
     { name: "Pandas", icon: <SiPandas color="#150458" /> },
     { name: "Scikit-learn", icon: <SiScikitlearn color="#F7931E" /> },
     { name: "Flask", icon: <SiFlask /> },
+    { name: "FastAPI", icon: <SiFastapi color="#009688" /> },
     { name: "Git", icon: <SiGit color="#F05032" /> },
     { name: "AWS", icon: <SiAmazonwebservices color="#FF9900" /> },
     { name: "Google Colab", icon: <SiGooglecolab color="#F9AB00" /> },
